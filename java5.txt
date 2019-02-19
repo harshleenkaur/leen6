@@ -1,0 +1,385 @@
+public class genericpairdemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+Pair<String> secretpair=new Pair<String>("happy","day");
+Scanner Keyboard=new Scanner(System.in);
+System.out.println("enter 2 words:");
+String word1=Keyboard.next();
+String word2=Keyboard.next();
+Pair<String> inputpair=new Pair<String>(word1,word2);
+Pair<Integer> secretpair1=new Pair<Integer>(10,20);
+if(inputpair.equals(secretpair))
+{
+	System.out.println("you guessed the secret words");
+	System.out.println("in the correct order");
+	
+}
+else
+{
+	System.out.println("you guessed incorrectly");
+	System.out.println("you guessed ");
+	System.out.println(inputpair);
+	System.out.println("the secret words are");
+	System.out.println(secretpair);
+}
+secretpair1.display();
+	}
+
+}
+public class Pair<T>
+{
+	private T first;
+	private T second;
+	
+	public Pair()
+	{
+		first = null;
+		second =null;
+	}
+		public Pair( T firstItem, T secondItem)
+		{
+			first = firstItem;
+			second=secondItem;
+			
+		}
+		
+		public void setFirst( T newFirst)
+		{
+			first=newFirst;
+		}
+		public void setSecond(T newSecond)
+		{
+			second= newSecond;
+		}
+		public T getFrist()
+		{
+			return first;
+			
+		}
+		
+		public T getSecond()
+		{
+			return second;
+		}
+		public String toString()
+		{
+			return ("First :" + first.toString() + "\n" + "Second:" + second.toString()); //to print objects we write to string
+		}
+		public boolean equals (Object otherObject)
+		{
+			if(otherObject == null)
+				return false;
+			else if(getClass() != otherObject.getClass())
+				return false;
+			else
+			{
+				Pair<T> otherPair = (Pair<T> )otherObject;
+				return(first.equals(otherPair.first) && second.equals(otherPair.second));
+			}
+		}
+		void display()
+		{
+			System.out.println(first + " " +second);
+		}
+	
+}
+
+
+__________________________________________________________________________________________
+
+enter 2 words:
+harsh leen
+you guessed incorrectly
+you guessed 
+First :harsh
+Second:leen
+the secret words are
+First :happy
+Second:day
+10 20
+------------------------------------------------------------------------------------------
+import java.util.*;
+
+
+public class Stackdemo {
+
+	/**
+	 * @param args
+	 */
+	
+	static void showpush(Stack st,int a)
+	{
+		st.push(new Integer(a));
+		System.out.println("push("+a+")");
+		System.out.println("stack:" +st);
+	}
+	static void showpop(Stack st)
+	{
+		System.out.println("pop ->");
+		Integer a=(Integer) st.pop();
+		System.out.println(a);
+		System.out.println("stack:" +st);
+	
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Stack st=new Stack();
+		System.out.println("stack:" +st);
+		showpush(st,42);
+		showpush(st,66);
+		showpush(st,99);
+		showpop(st);
+		showpop(st);
+		showpop(st);
+		try{
+			showpop(st);
+		}
+		catch(EmptyStackException e)
+		{
+			System.out.println("empty stack");
+		}
+		
+	}
+
+}
+--------------------------------------------------------------------------------------------
+stack:[]
+push(42)
+stack:[42]
+push(66)
+stack:[42, 66]
+push(99)
+stack:[42, 66, 99]
+pop ->
+99
+stack:[42, 66]
+pop ->
+66
+stack:[42]
+pop ->
+42
+stack:[]
+pop ->
+empty stack
+-------------------------------------------------------------------------------------------
+import java.util.*;
+public class Testvector1 {
+
+	public static void main(String[] args)
+	{
+		Vector<String> v=new Vector<String>();
+		v.add("umesh");
+		v.addElement("john");
+		v.addElement("kumar");
+	
+		Enumeration e=v.elements();
+		while(e.hasMoreElements())
+		{
+			System.out.println(e.nextElement());
+			
+		}
+	}
+}
+------------------------------------------------------------------------------------------
+umesh
+john
+kumar
+------------------------------------------------------------------------------------------
+import java.util.List;
+import java.util.ArrayList;
+class book
+{
+	int id;
+	String name;
+	String author;
+	String publisher;
+	int quantity;
+
+public book(int id,String name,String author,String publisher,int quantity)
+{
+	this.id=id;
+	this.name=name;
+	this.author=author;
+	this.publisher=publisher;
+	this.quantity=quantity;
+}
+}
+public class Arraylistexample {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+List<book> list=new ArrayList<book>();
+book b1=new book(101,"let us c","yashwant kanetkar","BPB",8);
+book b2=new book(102,"data communication and networking","forouzan","MC Graw Hill",4);
+book b3=new book(103,"operating system","galvin","wiley",6);
+list.add(b1);
+list.add(b2);
+list.add(b3);
+for(book b:list)
+{
+	System.out.println(b.id+" "+b.name+"" +b.author+ "" +b.publisher+ " "+b.quantity);
+}
+	
+	}
+
+}
+------------------------------------------------------------------------------------------
+101 let us cyashwant kanetkarBPB 8
+102 data communication and networkingforouzanMC Graw Hill 4
+103 operating systemgalvinwiley 6
+------------------------------------------------------------------------------------------
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class MyBasicArrayList {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		ArrayList p=new ArrayList();
+		p.add("java");
+		p.add("c++");
+		p.add("perl");
+		p.add("php");
+		
+		System.out.println(p);
+		System.out.println("elements at index 1:" +p.get(1));
+		System.out.println("does list contains java?" +p.contains("JAVA"));
+		p.add(2,"Play");	
+		System.out.println(p);
+		System.out.println("Is Arraylist empty?" +p.isEmpty());
+		System.out.println("Index of perl is" +p.indexOf("perl"));
+		System.out.println("Size of the arraylist is:" +p.size());
+		Collections.sort(p);
+		
+		System.out.println(p);
+	} 
+
+}
+------------------------------------------------------------------------------------------
+does list contains java?false
+[java, c++, Play, perl, php]
+Is Arraylist empty?false
+Index of perl is3
+Size of the arraylist is:5
+[Play, c++, java, perl, php]
+----------------------------------------------------------------------------------------
+import java.util.ArrayList;
+import java.util.List;
+
+class playerlist
+{
+	ArrayList playerArray;
+	List sublistobj;
+	playerlist()
+	{
+		playerArray=new ArrayList();
+		sublistobj=new ArrayList();
+	}
+	void add()
+	{
+		for(int ctr=0;ctr<5;ctr++)
+		{
+			playerArray.add(new Integer(ctr));
+	}
+	playerArray.add("martin");
+	playerArray.add("serena");
+	playerArray.add("venus");
+	playerArray.add("serens");
+	System.out.println();
+	}
+
+	void search()
+	{
+		System.out.println();
+		System.out.println("*******************************");
+		System.out.println("search for an object and return" + "the first and last position");
+		System.out.println("******************************************************************");
+		System.out.println();
+		System.out.println("first occurance of the string" + "\"serena\" is at position" +playerArray.indexOf("serena"));
+		System.out.println("list occurance of the string" +"\"serena\" is at position "+ playerArray.lastIndexOf("serena"));
+		System.out.println();
+	}
+	void display()
+	{
+		System.out.println("***********************" + "*********************");
+		System.out.println("retreive objects from the array list");
+		System.out.println("**********************" + "******************");
+for(int ctr=0;ctr<playerArray.size();ctr++)
+{
+	System.out.println("" + playerArray.get(ctr));
+}
+		
+	}
+void extract()
+{
+	System.out.println("*****************" + "*******************");
+	System.out.println("Extract a sublist and" + "then print the new list");
+	System.out.println("******************" + "******************");
+	System.out.println();
+	sublistobj=playerArray.subList(5,playerArray.size());
+	System.out.println("New Sub-List from index 5 to " + "playerArray.size()" + "is:" + sublistobj);
+	System.out.println();
+}
+}
+	
+public class Arraylistdemo {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+playerlist p=new playerlist();
+p.add();
+p.display();
+p.search();
+p.extract();
+
+	}
+
+}
+------------------------------------------------------------------------------------------
+
+********************************************
+retreive objects from the array list
+****************************************
+0
+1
+2
+3
+4
+martin
+serena
+venus
+serens
+
+*******************************
+search for an object and returnthe first and last position
+******************************************************************
+
+first occurance of the string"serena" is at position6
+list occurance of the string"serena" is at position 6
+
+************************************
+Extract a sublist andthen print the new list
+************************************
+
+New Sub-List from index 5 to playerArray.size()is:[martin, serena, venus, serens]
+
+------------------------------------------------------------------------------------------
